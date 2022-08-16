@@ -4,25 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Family {
+@Table(name = "family")
+@SQLDelete(sql = "UPDATE family SET deleted_at = NOW() WHERE id= ?")
+@Where(clause = "deleted_at = null")
+public class Family extends EntityModel {
 
-    @Id
-    @GeneratedValue
-    private Long id;
     private String familyName;
     private Float lat;
     private Float lon;
-    private int numberOfChildren;
+    private Integer numberOfChildren;
     private Double householdIncome;
     private String religion;
     private String race;
@@ -31,8 +32,7 @@ public class Family {
     @Override
     public String toString() {
         return "Family{" +
-                "id=" + id +
-                ", familyName='" + familyName + '\'' +
+                "familyName='" + familyName + '\'' +
                 ", lat=" + lat +
                 ", lon=" + lon +
                 ", numberOfChildren=" + numberOfChildren +
@@ -40,6 +40,10 @@ public class Family {
                 ", religion='" + religion + '\'' +
                 ", race='" + race + '\'' +
                 ", familySize=" + familySize +
+                ", id=" + id +
+                ", createdAt=" + createdAt +
+                ", deletedAt=" + deletedAt +
                 '}';
     }
 }
+
