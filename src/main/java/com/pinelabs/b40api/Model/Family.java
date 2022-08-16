@@ -1,9 +1,17 @@
 package com.pinelabs.b40api.Model;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Family {
 
     //Attributes
+    @Id
+    @GeneratedValue
     private Long id; //Primary Key
     private String familyName;
     private String location;
@@ -25,7 +33,11 @@ public class Family {
         this.religion = religion;
         this.race = race;
     }
-    
+
+    public Family() {
+
+    }
+
 
     //Getters
     public Long getId() {
