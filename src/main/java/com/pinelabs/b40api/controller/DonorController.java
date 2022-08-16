@@ -1,6 +1,6 @@
 package com.pinelabs.b40api.controller;
 
-import com.pinelabs.b40api.model.Donor;
+import com.pinelabs.b40api.models.Donor;
 import com.pinelabs.b40api.repository.DonorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,16 +11,13 @@ import java.util.List;
 @RequestMapping("donor")
 public class DonorController {
 
-
     @Autowired
     private DonorRepository donorRepository;
-
 
     @GetMapping("get/all")
     public List<Donor> getAllDonor(){
         return donorRepository.findAll();
     }
-
 
     @PostMapping("create")
     public String createDonor(@RequestBody Donor donor){
@@ -28,24 +25,18 @@ public class DonorController {
         return "New Donor added";
     }
 
-
     @GetMapping("{get/id}")
     public Donor getDonorById(@PathVariable Integer id){
         return donorRepository.findById(id).orElseThrow(() -> new IllegalStateException("Invalid Id"));
     }
 
-
     @PutMapping("{update/id}")
     public Donor updateDonor(@PathVariable Integer id,@RequestBody Donor donorDetails) {
         Donor updateDonorDetails = donorRepository.findById(id).get();
 
-        updateDonorDetails.setName(donorDetails.getName());
         updateDonorDetails.setLocation(donorDetails.getLocation());
         updateDonorDetails.setReligion(donorDetails.getReligion());
-        updateDonorDetails.setRace(donorDetails.getRace());
-        updateDonorDetails.setPhone(donorDetails.getPhone());
-        updateDonorDetails.setDob(donorDetails.getDob());
-        updateDonorDetails.setGender(donorDetails.getGender());
+        updateDonorDetails.setPhoneNumber(donorDetails.getPhoneNumber());
 
         return  updateDonorDetails;
     }
