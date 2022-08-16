@@ -24,6 +24,8 @@ public class Donor {
     }
     private Date dateOfBirth;
 
+    public Donor(){}
+
     public Donor(String name, String location, String religion, String race, long phoneNumber, Date dateOfBirth) {
         this.name = name;
         this.location = location;
