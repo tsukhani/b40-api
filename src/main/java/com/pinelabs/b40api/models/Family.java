@@ -1,6 +1,4 @@
-package com.pinelabs.b40api.Model;
-
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+package com.pinelabs.b40api.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
