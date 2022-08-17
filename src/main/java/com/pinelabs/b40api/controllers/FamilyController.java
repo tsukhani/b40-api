@@ -92,4 +92,20 @@ public class FamilyController {
     public ResponseEntity<Family> deleteById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.familyService.deleteById(id), HttpStatus.ACCEPTED);
     }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @Operation(summary = "update family by their id", description = "returns the updated family data", tags = {"Family"})
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "202", description = "Successful update family",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = Family.class)
+                    )
+            )
+    })
+    public ResponseEntity<Family> updateById(@RequestBody Family dto, @PathVariable("id") Long id) {
+        return new ResponseEntity<>(this.familyService.updateById(dto, id), HttpStatus.ACCEPTED);
+    }
 }

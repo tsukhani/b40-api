@@ -57,6 +57,19 @@ public class FamilyService {
     }
 
     public Family updateById(Family updateFamily, Long id) {
-        return null;
+        return this.familyRepository.findById(id)
+                .map(family -> {
+                    family.setFamilyName(updateFamily.getFamilyName());
+                    family.setFamilySize(updateFamily.getFamilySize());
+                    family.setHouseholdIncome(updateFamily.getHouseholdIncome());
+                    family.setLat(updateFamily.getLat());
+                    family.setLon(updateFamily.getLon());
+                    family.setRace(updateFamily.getRace());
+                    family.setReligion(updateFamily.getReligion());
+                    family.setNumberOfChildren(updateFamily.getNumberOfChildren());
+
+                    return this.familyRepository.save(family);
+                })
+                .orElseThrow(() -> new FamilyNotFoundException("id", id));
     }
 }
