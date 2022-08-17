@@ -25,12 +25,12 @@ public class DonorController {
         return "New Donor added";
     }
 
-    @GetMapping("{get/id}")
+    @GetMapping("get/id")
     public Donor getDonorById(@PathVariable Integer id){
         return donorRepository.findById(id).orElseThrow(() -> new IllegalStateException("Invalid Id"));
     }
 
-    @PutMapping("{update/id}")
+    @PutMapping("update/id")
     public Donor updateDonor(@PathVariable Integer id,@RequestBody Donor donorDetails) {
         Donor updateDonorDetails = donorRepository.findById(id).get();
 
@@ -41,8 +41,7 @@ public class DonorController {
         return  updateDonorDetails;
     }
 
-
-    @DeleteMapping("{delete/id}")
+    @DeleteMapping("delete/id")
     public void deleteDonor(@PathVariable Integer id){
         donorRepository.deleteById(id);
     }
