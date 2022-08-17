@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 public class Donor {
@@ -22,11 +21,11 @@ public class Donor {
         Male,
         Female
     }
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     public Donor(){}
 
-    public Donor(String name, String location, String religion, String race, long phoneNumber, Date dateOfBirth) {
+    public Donor(String name, String location, String religion, String race, long phoneNumber, String dateOfBirth) {
         this.name = name;
         this.location = location;
         this.religion = religion;
@@ -67,7 +66,7 @@ public class Donor {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 }
