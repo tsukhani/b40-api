@@ -1,7 +1,10 @@
 package com.pinelabs.b40api.controllers;
 
+import com.pinelabs.b40api.dtos.CreateFamilyDto;
 import com.pinelabs.b40api.models.Family;
 import com.pinelabs.b40api.services.FamilyService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,17 +20,17 @@ public class FamilyController {
     }
 
     @GetMapping()
-    public List<Family> getAll() {
-        return this.familyService.getAllFamily();
+    public ResponseEntity<List<Family>> getAll() {
+        return new ResponseEntity<>(this.familyService.getAllFamily(), HttpStatus.OK);
     }
 
     @PostMapping()
-    public Family create() {
-        return new Family();
+    public ResponseEntity<Family> create(@RequestBody CreateFamilyDto dto) {
+        return new ResponseEntity<>(this.familyService.createFamily(dto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public Family getById(@PathVariable("id") Long id) {
-        return this.familyService.getFamilyById(id);
+    public ResponseEntity<Family> getById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(this.familyService.getFamilyById(id), HttpStatus.OK);
     }
 }
