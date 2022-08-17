@@ -46,11 +46,33 @@ public class FamilyController {
     }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Post Family", description = "Create a family", tags = {"Family"})
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200", description = "Successful create family",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = Family.class)
+                    )
+            )
+    })
     public ResponseEntity<Family> create(@RequestBody @Valid CreateFamilyDto dto) {
         return new ResponseEntity<>(this.familyService.createFamily(dto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "get family by their id", description = "returns a family by id", tags = {"Family"})
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200", description = "Successful get family",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = Family.class)
+                    )
+            )
+    })
     public ResponseEntity<Family> getById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.familyService.getFamilyById(id), HttpStatus.OK);
     }
