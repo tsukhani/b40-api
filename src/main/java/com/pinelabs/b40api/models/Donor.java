@@ -64,6 +64,10 @@ public class Donor {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
     public String getDateOfBirth() {
         return dateOfBirth;
     }
