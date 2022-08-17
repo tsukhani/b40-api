@@ -1,9 +1,6 @@
 package com.pinelabs.b40api.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -13,11 +10,12 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "family")
 @SQLDelete(sql = "UPDATE family SET deleted_at = NOW() WHERE id= ?")
-@Where(clause = "deleted_at = null")
+@Where(clause = "deleted_at IS NULL")
 public class Family extends EntityModel {
 
     private String familyName;
