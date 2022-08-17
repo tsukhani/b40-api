@@ -3,6 +3,7 @@ server:
   error:
     include-stacktrace: never
     include-message: always
+    include-binding-errors: never
 
 
 spring:

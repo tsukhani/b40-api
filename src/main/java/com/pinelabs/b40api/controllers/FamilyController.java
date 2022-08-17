@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -45,7 +46,7 @@ public class FamilyController {
     }
 
     @PostMapping()
-    public ResponseEntity<Family> create(@RequestBody CreateFamilyDto dto) {
+    public ResponseEntity<Family> create(@RequestBody @Valid CreateFamilyDto dto) {
         return new ResponseEntity<>(this.familyService.createFamily(dto), HttpStatus.CREATED);
     }
 
