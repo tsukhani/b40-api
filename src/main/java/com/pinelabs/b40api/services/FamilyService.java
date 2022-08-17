@@ -47,6 +47,15 @@ public class FamilyService {
         return this.familyRepository.save(family);
     }
 
+    public Family deleteById(Long id) {
+        var toDeleteFamily = this.familyRepository.findById(id)
+                .orElseThrow(() -> new FamilyNotFoundException("id", id));
+
+        this.familyRepository.deleteById(id);
+
+        return toDeleteFamily;
+    }
+
     public Family updateById(Family updateFamily, Long id) {
         return null;
     }

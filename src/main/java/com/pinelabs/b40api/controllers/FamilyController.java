@@ -76,4 +76,20 @@ public class FamilyController {
     public ResponseEntity<Family> getById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.familyService.getFamilyById(id), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @Operation(summary = "delete family by their id", description = "returns the deleted family data", tags = {"Family"})
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "202", description = "Successful delete family",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = Family.class)
+                    )
+            )
+    })
+    public ResponseEntity<Family> deleteById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(this.familyService.deleteById(id), HttpStatus.ACCEPTED);
+    }
 }
