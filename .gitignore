@@ -35,4 +35,3 @@ build/
 ### Intellij ###
 .idea/
 
-***/application.yml
