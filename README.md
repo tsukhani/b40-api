@@ -9,6 +9,7 @@
     ```bash
     $ docker compose up
     ```
+- rename file ``application.yml.bak`` to ``application.yml``
 
 ### Swagger documentation path
 
