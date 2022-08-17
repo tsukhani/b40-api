@@ -16,5 +16,4 @@ public class B40ApiApplication {
     public ModelMapper getModelMapper() {
         return new ModelMapper();
     }
-
 }
