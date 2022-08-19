@@ -16,3 +16,8 @@
 ```
 http://localhost:8080/api/swagger
 ```
+
+### Production Link
+```
+https://b40locator-api.herokuapp.com/api/swagger-ui/index.html
+```
