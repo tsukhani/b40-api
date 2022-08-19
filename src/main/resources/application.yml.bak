@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  error:
+    include-stacktrace: never
+    include-message: always
+    include-binding-errors: never
+
+
+spring:
+  application:
+    name: B40-API
+  datasource:
+    username: 'backend-pinelabs'
+    url: jdbc:postgresql://localhost:5432/B40-API
+    password: 'muaz_hansom'
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    show-sql: 'true'
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /api/swagger
