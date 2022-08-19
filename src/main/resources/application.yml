@@ -10,12 +10,12 @@ spring:
   application:
     name: B40-API
   datasource:
-    username: 'backend-pinelabs'
-    #username: acfvfkwwzakwkx
+    #username: 'backend-pinelabs'
+    username: nmmkjproxgdikb
     url: jdbc:postgresql://localhost:5432/B40-API
     #url: jdbc:postgresql://ec2-52-207-15-147.compute-1.amazonaws.com
-    password: 'muaz_hansom'
-    #password: 8c6e74c211aab80af689b31bd1986438948db50d6ad3812e987d0f1cd6178fea
+    #password: 'muaz_hansom'
+    password: 9e836215075276325f8a0b61cf406717e11763c63607a5d40c177bd4abe7c554
   jpa:
     hibernate:
       ddl-auto: create-drop
