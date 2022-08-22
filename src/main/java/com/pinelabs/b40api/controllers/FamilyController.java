@@ -42,7 +42,7 @@ public class FamilyController {
             )
     })
     public ResponseEntity<List<Family>> getAll() {
-        return new ResponseEntity<>(this.familyService.getAllFamily(), HttpStatus.OK);
+        return new ResponseEntity<>(this.familyService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping()
@@ -58,7 +58,7 @@ public class FamilyController {
             )
     })
     public ResponseEntity<Family> create(@RequestBody @Valid CreateFamilyDto dto) {
-        return new ResponseEntity<>(this.familyService.createFamily(dto), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.familyService.create(dto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -74,7 +74,7 @@ public class FamilyController {
             )
     })
     public ResponseEntity<Family> getById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(this.familyService.getFamilyById(id), HttpStatus.OK);
+        return new ResponseEntity<>(this.familyService.getById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

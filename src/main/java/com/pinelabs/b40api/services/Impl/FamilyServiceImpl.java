@@ -24,19 +24,19 @@ public class FamilyServiceImpl implements FamilyService {
     }
 
     @Override
-    public Family getFamilyById(Long id) {
+    public Family getById(Long id) {
         LOG.debug("Get Family By Id");
         return this.familyRepository.findById(id)
                 .orElseThrow(() -> new FamilyNotFoundException("id", id));
     }
 
     @Override
-    public List<Family> getAllFamily() {
+    public List<Family> getAll() {
         return this.familyRepository.findAll();
     }
 
     @Override
-    public Family createFamily(CreateFamilyDto dto) {
+    public Family create(CreateFamilyDto dto) {
         var family = Family.builder()
                 .familyName(dto.getFamilyName())
                 .householdIncome(dto.getHouseholdIncome())
